@@ -53,8 +53,8 @@ namespace DotNetKoans.CSharp
         {
             var array = new[] { "peanut", "butter", "and", "jelly" };
 
-            Assert.Equal(FILL_ME_IN, array[0]);
-            Assert.Equal(FILL_ME_IN, array[3]);
+            Assert.Equal("peanut", array[0]);
+            Assert.Equal("jelly", array[3]);
             
             //This doesn't work: Assert.Equal(FILL_ME_IN, array[-1]);
         }
@@ -64,8 +64,8 @@ namespace DotNetKoans.CSharp
         {
             var array = new[] { "peanut", "butter", "and", "jelly" };
 
-			Assert.Equal(new string[] { (string)FILL_ME_IN, (string)FILL_ME_IN }, array.Take(2).ToArray());
-			Assert.Equal(new string[] { (string)FILL_ME_IN, (string)FILL_ME_IN }, array.Skip(1).Take(2).ToArray());
+			Assert.Equal(new string[] { (string)"peanut", (string)"butter"}, array.Take(2).ToArray());
+			Assert.Equal(new string[] { (string)"butter", (string)"and" }, array.Skip(1).Take(2).ToArray());
         }
 
         [Koan(5)]
@@ -74,10 +74,10 @@ namespace DotNetKoans.CSharp
             var array = new[] { 1, 2 };
             Stack stack = new Stack(array);
             stack.Push("last");
-            Assert.Equal(FILL_ME_IN, stack.ToArray());
+            Assert.Equal(new object[] {"last",2,1}, stack.ToArray());
             var poppedValue = stack.Pop();
-            Assert.Equal(FILL_ME_IN, poppedValue);
-            Assert.Equal(FILL_ME_IN, stack.ToArray());
+            Assert.Equal("last", poppedValue);
+            Assert.Equal(new object[] { 2,1 }, stack.ToArray());
         }
 
         [Koan(6)]
@@ -91,16 +91,16 @@ namespace DotNetKoans.CSharp
             var list = new LinkedList<string>(array);
 
             list.AddFirst("Say");
-            Assert.Equal(FILL_ME_IN, list.ToArray());
+            Assert.Equal(new[] { "Say", "Hello", "World"}, list.ToArray());
 
             list.RemoveLast();
-            Assert.Equal(FILL_ME_IN, list.ToArray());
+            Assert.Equal(new[] { "Say", "Hello" }, list.ToArray());
 
             list.RemoveFirst();
-            Assert.Equal(FILL_ME_IN, list.ToArray());
+            Assert.Equal(new[] {"Hello"}, list.ToArray());
 
             list.AddAfter(list.Find("Hello"), "World");
-            Assert.Equal(FILL_ME_IN, list.ToArray());
+            Assert.Equal(new[] { "Hello","World"}, list.ToArray());
         }
 
     }
